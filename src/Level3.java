@@ -1,7 +1,3 @@
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.control.Toggle;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
@@ -9,107 +5,198 @@ import javafx.scene.shape.Arc;
 import javafx.scene.shape.ArcType;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 
 public class Level3 extends Pane {
-	private double startX = 100 , startY = 100 , endX = 300 , endY = 100 ;
+	private double startX = 200 , startY = 100 , endX = 400 , endY = 100 ;
 
 	public Level3() {
 		// TODO Auto-generated constructor stub
 		paintLevel3();
+		
+		Text text = new Text(240,50,"Level 3");
+		text.setFont(Font.font("Times New Roman",25));
+		getChildren().add(text);
 	}
-	
+
 
 	public void paintLevel3() {
-        
-		
-        
+
+
+
 		getChildren().clear();
 		paintBoldLine();
-		paintPath();
-		paintCircle();
 		paintBoldLine2();
+		paintBoldLine3();
+		paintPath();	
 		paintPath2();
+		paintPath3();
+		paintCircle();
 		paintCircle2();
+		paintCircle3();
+		paintGate();
+		paintGate2();
+		paintGate3();
 
 	}
-	
+
 	private void paintBoldLine() {
-		Line hLine = new Line(startX,startY,endX,endY);
-        hLine.setStrokeWidth(3);
-		hLine.setStroke(Color.BLACK);
-		
+		Line line = new Line(startX,startY,endX,endY);
+        line.setStrokeWidth(3);
+		line.setStroke(Color.BLACK);
+
 		Arc semiCircle = new Arc(startX + 220 ,startY,20,20, 360, 180);
 		semiCircle.setType(ArcType.OPEN);
-		semiCircle.setFill(Color.WHITE);
+		semiCircle.setFill(null);
+		semiCircle.setStrokeWidth(3);
+		semiCircle.setStroke(Color.BLACK);
+
+		Line line2 = new Line(startX + 240,startY,endX + 80,endY);
+        line2.setStrokeWidth(3);
+		line2.setStroke(Color.BLACK);
+
+
+		getChildren().add(line);
+		getChildren().add(semiCircle);
+		getChildren().add(line2);
+	}
+
+	private void paintBoldLine2() {
+		Line line = new Line(startX + 220,startY - 3,endX + 20,170);
+        line.setStrokeWidth(3);
+		line.setStroke(Color.BLACK);
+		
+		Arc semiCircle = new Arc(startX + 220 ,startY + 90,20,20, 270, 180);
+		semiCircle.setType(ArcType.OPEN);
+		semiCircle.setFill(null);
 		semiCircle.setStrokeWidth(3);
 		semiCircle.setStroke(Color.BLACK);
 		
-		Line hLineC = new Line(startX + 240,startY,endX + 80,endY);
-        hLineC.setStrokeWidth(3);
-		hLineC.setStroke(Color.BLACK);
-		
+		Line line2 = new Line(startX + 220 ,startY + 110,endX + 20,endY + 180);
+        line2.setStrokeWidth(3);
+		line2.setStroke(Color.BLACK);
 
-		getChildren().add(hLine);
+
+		getChildren().add(line);
 		getChildren().add(semiCircle);
-		getChildren().add(hLineC);
+		getChildren().add(line2);
 	}
 	
-	private void paintBoldLine2() {
-		Line hLine = new Line(320,100,320,200);
-        hLine.setStrokeWidth(3);
-		hLine.setStroke(Color.BLACK);
+	private void paintBoldLine3() {
+		Line line = new Line(startX + 50 ,startY + 90,endX + 23,endY + 90);
+        line.setStrokeWidth(3);
+		line.setStroke(Color.BLACK);
 		
-		
-		getChildren().add(hLine);
+		getChildren().add(line);
 	}
 	
+	private void paintGate() {
+
+		Line line = new Line(247, 183, 247, 197);// this is the vertical line													// that is between
+		line.setStrokeWidth(3); // the horizontal line and the path
+		line.setStroke(Color.BLACK);
+		
+		
+		getChildren().add(line);
+	}
+	
+	private void paintGate2() {
+
+		Line line = new Line(197, 93, 197, 107);// this is the vertical line													// that is between
+		line.setStrokeWidth(3); // the horizontal line and the path
+		line.setStroke(Color.BLACK);
+		
+		
+		getChildren().add(line);
+	}
+	
+	private void paintGate3 () {
+
+		Line line = new Line(413, 283, 427, 283);// this is the vertical line													// that is between
+		line.setStrokeWidth(3); // the horizontal line and the path
+		line.setStroke(Color.BLACK);
+		
+		
+		getChildren().add(line);
+	}
+
 	private void paintPath() {
-		Line path1 = new Line(90,100,100,100);
+		Line path1 = new Line(190,100,198,100);
 		path1.setStrokeWidth(2);
 		path1.setStroke(Color.GRAY);
-		Line path2 = new Line(90,100,90,220);
+		Line path2 = new Line(190,100,190,370);
 		path2.setStrokeWidth(2);
 		path2.setStroke(Color.GRAY);
-		Line path3 = new Line(90,220,400,220);
+
+
+
+		getChildren().add(path1);
+		getChildren().add(path2);
+
+
+	}
+
+	private void paintPath2() {
+		Line path1 = new Line(420,283,420,290);
+		path1.setStrokeWidth(2);
+		path1.setStroke(Color.GRAY);
+		
+		Line path2 = new Line(50,290,420,290);
+		path2.setStrokeWidth(2);
+		path2.setStroke(Color.GRAY);
+
+
+		getChildren().add(path1);
+		getChildren().add(path2);
+
+	}
+	
+	private void paintPath3() {
+		Line path1 = new Line(240,190,248,190);
+		path1.setStrokeWidth(2);
+		path1.setStroke(Color.GRAY);
+		
+		Line path2 = new Line(240,190,240,330);
+		path2.setStrokeWidth(2);
+		path2.setStroke(Color.GRAY);
+		
+		Line path3 = new Line(120,330,240,330);
 		path3.setStrokeWidth(2);
 		path3.setStroke(Color.GRAY);
-		
 		
 		
 		getChildren().add(path1);
 		getChildren().add(path2);
 		getChildren().add(path3);
-		
 	}
 	
-	private void paintPath2() {
-		Line path1 = new Line(320,200,320,250);
-		path1.setStrokeWidth(2);
-		path1.setStroke(Color.GRAY);
-		
-		
-		getChildren().add(path1);
+
+	private void paintCircle() {
+		Circle circle = new Circle(30,290,20);
+		circle.setFill(Color.GRAY);
+
+		getChildren().add(circle);
+
+
+	}
+
+	private void paintCircle2() {
+		Circle circle = new Circle(100,330,20);
+		circle.setFill(Color.GRAY);
+
+		getChildren().add(circle);
+
 
 	}
 	
-	private void paintCircle() {
-		Circle circle = new Circle(400,220,20);
+	private void paintCircle3() {
+		Circle circle = new Circle(190,390,20);
 		circle.setFill(Color.GRAY);
-		
+
 		getChildren().add(circle);
-		
-		
 	}
-	
-	private void paintCircle2() {
-		Circle circle = new Circle(320,270,20);
-		circle.setFill(Color.GRAY);
-		
-		getChildren().add(circle);
-		
-		
-	}
-	
+
 
 }
