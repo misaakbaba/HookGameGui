@@ -1,3 +1,5 @@
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Toggle;
@@ -11,17 +13,32 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 public class Level1 extends Pane {
 	private double startX = 100, startY = 100, endX = 300, endY = 100;
 
 	public Level1() {
 		// TODO Auto-generated constructor stub
+
 		paintLevel1();
-		
-		Text text = new Text(180,50,"Level 1");
-		text.setFont(Font.font("Times New Roman",25));
+
+		Text text = new Text(180, 50, "Level 1");
+		text.setFont(Font.font("Times New Roman", 25));
 		getChildren().add(text);
+		text.setOpacity(0);
+
+		Timeline animation = new Timeline(new KeyFrame(Duration.millis(100), e -> {
+			if (text.getOpacity() < 0.8)
+				text.setOpacity(text.getOpacity() + 0.15);
+		}));
+		animation.setCycleCount(20);
+		animation.play(); // Start animation
+		Timeline animation2 = new Timeline(new KeyFrame(Duration.millis(100), e -> {
+			text.setOpacity(text.getOpacity() - 0.05);
+		}));
+		animation2.setCycleCount(50);
+		animation2.play(); // Start animation
 	}
 
 	public void paintLevel1() {
@@ -35,8 +52,6 @@ public class Level1 extends Pane {
 		paintCircle2();
 		paintGate();
 		paintGate2();
-		
-		
 
 	}
 
