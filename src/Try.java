@@ -42,7 +42,7 @@ public class Try extends Application {
 //		first.setRight(l2);
 //		first.setLeft(l3);
 
-		Scene s = new Scene(l4);
+		Scene s = new Scene(l1);
 		primaryStage.setScene(s);
 		primaryStage.setWidth(800);
 		primaryStage.setHeight(500);

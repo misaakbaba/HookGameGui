@@ -41,6 +41,7 @@ public class Level4 extends Pane {
 		paintRotatingCircle();
 		paintRotatingLine();
 		paintGate1();
+		paintGate2();
 
 	}
 
@@ -141,9 +142,17 @@ public class Level4 extends Pane {
 		getChildren().add(line);
 
 	}
+	
+	private void paintGate2() {
+		Line line = new Line(200,93,200,107);
+		line.setStrokeWidth(3);
+		line.setStroke(Color.BLACK);
+		
+		getChildren().add(line);
+
+	}
 
 	private void paintRotatingCircle() {
-		rotatingCircle = new Circle(190,260,20);
 		rotatingCircle.setFill(Color.WHITE);
 		rotatingCircle.setStroke(Color.gray(0.4));
 		rotatingCircle.setStrokeWidth(3);
@@ -186,6 +195,11 @@ public class Level4 extends Pane {
 	    	    animation.setCycleCount(1);
 	    	    animation.play(); // Start animation
 
+	}
+	
+	public boolean isVertical() {
+		
+		return false;
 	}
 	
 	
