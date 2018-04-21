@@ -1,5 +1,6 @@
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
+import javafx.animation.SequentialTransition;
 import javafx.animation.Timeline;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -14,10 +15,14 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 public class Level1 extends Pane {
+	public boolean isPushedBoldline2 = false;
+	
 	private double startX = 100, startY = 100, endX = 300, endY = 100;
+	private double startX2 = 320, startY2 = 97, endX2 = 320, endY2 = 200;
 	Circle circle1 = new Circle(400, 220, 20);
 	Circle circle2 = new Circle(320, 270, 20);
 	Line gate1 = new Line(100, 93, 100, 107);
+	Line gate2 = new Line(313, 200, 327, 200);// this is the vertical line
 	
 	public Level1() {
 		// TODO Auto-generated constructor stub
@@ -35,11 +40,14 @@ public class Level1 extends Pane {
 		}));
 		animation.setCycleCount(20);
 		animation.play(); // Start animation
+		
 		Timeline animation2 = new Timeline(new KeyFrame(Duration.millis(100), e -> {
 			text.setOpacity(text.getOpacity() - 0.05);
 		}));
 		animation2.setCycleCount(50);
 		animation2.play(); // Start animation
+		
+		
 		
 		Timeline animation3 = new Timeline(new KeyFrame(Duration.millis(10), e -> {
 			startX += -1;
@@ -59,10 +67,63 @@ public class Level1 extends Pane {
 		animation4.setCycleCount(15);
 		
 		circle1.setOnMouseClicked(e -> {
-			animation3.play(); // Start animation
-			animation4.play();
-			FadeTransition fade = new FadeTransition(Duration.millis(6000),gate1);
-			fade.setFromValue(2);
+			if (isPushedBoldline2) {
+				animation3.play(); // Start animation
+				animation4.play();
+				FadeTransition fade = new FadeTransition(Duration.millis(6000),gate1);
+				fade.setFromValue(2);
+				fade.setToValue(0);
+				fade.play();
+			} else {
+				Timeline broke = new Timeline(new KeyFrame(Duration.millis(10), ex -> {
+					gate1.setStartY(gate1.getStartY()-1);
+					gate1.setEndY(gate1.getEndY()+1);	
+					startX += -1;
+					endX += -1;
+					paintLevel1();
+				}));
+				broke.setCycleCount(17);
+				System.out.println("s");
+//				broke.play(); // Start animation
+				System.out.println("s");
+				Timeline broke2 = new Timeline(new KeyFrame(Duration.millis(10), ex -> {
+					startX += 1;
+					endX += 1;
+					paintLevel1();
+				}));
+				broke2.setCycleCount(10);
+//				broke2.playFrom(new Duration(10000)); // Start animation
+				
+				SequentialTransition seq = new SequentialTransition();
+				seq.getChildren().addAll(broke,broke2);
+				seq.play();
+				
+			}
+
+		});
+		
+		Timeline animation5 = new Timeline(new KeyFrame(Duration.millis(10), e -> {
+			startY2 += 1;
+			endY2 += 1;
+			paintLevel1();
+			
+		}));
+		animation5.setCycleCount(110);
+		
+		Timeline animation6 = new Timeline(new KeyFrame(Duration.millis(10), e -> {
+			gate2.setStartX(gate2.getStartX()-1);
+			gate2.setEndX(gate2.getEndX()+1);
+			paintLevel1();
+			
+		}));
+		animation6.setCycleCount(15);
+		
+		circle2.setOnMouseClicked(e -> {
+			isPushedBoldline2 = true;
+			animation5.play(); // Start animation
+			animation6.play();
+			FadeTransition fade = new FadeTransition(Duration.millis(2000),gate2);
+			fade.setFromValue(5);
 			fade.setToValue(0);
 			fade.play();
 		});
@@ -74,13 +135,17 @@ public class Level1 extends Pane {
 		Rectangle rectangle = new Rectangle(0,0,100,150);
 		rectangle.setFill(Color.WHITE);
 		
+		Rectangle rectangle2 = new Rectangle(270,200,100,150);
+		rectangle2.setFill(Color.WHITE);
+		
 
 		getChildren().clear();
 		paintBoldLine();
+		paintBoldLine2();
 		getChildren().add(rectangle);
+		getChildren().add(rectangle2);
 		paintPath();
 		paintCircle1();
-		paintBoldLine2();
 		paintPath2();
 		paintCircle2();
 		paintGate();
@@ -111,7 +176,7 @@ public class Level1 extends Pane {
 	}
 
 	private void paintBoldLine2() {
-		Line line = new Line(320, 97, 320, 200);
+		Line line = new Line(startX2, startY2 , endX2, endY2);
 		line.setStrokeWidth(3);
 		line.setStroke(Color.BLACK);
 
@@ -170,12 +235,19 @@ public class Level1 extends Pane {
 	}
 
 	private void paintGate2() {
-		Line VLine = new Line(313, 200, 327, 200);// this is the vertical line
+
 		// that is between
-		VLine.setStrokeWidth(3); // the horizontal line and the path
-		VLine.setStroke(Color.BLACK);
-		getChildren().add(VLine);
+		gate2.setStrokeWidth(3); // the horizontal line and the path
+		gate2.setStroke(Color.BLACK);
+		getChildren().add(gate2);
 
 	}
-
-}
+	
+	private void restartLevel() {
+		
+		startX = 100; startY = 100; endX = 300; endY = 100;
+		paintLevel1();
+	}
+	
+}	
+	
