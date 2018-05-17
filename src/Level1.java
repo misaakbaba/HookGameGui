@@ -10,38 +10,41 @@ import javafx.util.Duration;
 
 public class Level1 extends Drawings {
     public boolean isPushedBoldline2 = false;
-
+    Text openingText;
+    Line hLine;
+    Arc semiCircle;
+    Line hLineC;
+    Line line;
+    Line path1, path2, path3,path4;
     Circle circle1 = new Circle(400, 220, 20);
+
     Circle circle2 = new Circle(320, 270, 20);
     Line gate1 = new Line(100, 93, 100, 107);
     Line gate2 = new Line(313, 200, 327, 200);// this is the vertical line
+
+
+
     private double startX = 100, startY = 100, endX = 300, endY = 100;
     private double startX2 = 320, startY2 = 97, endX2 = 320, endY2 = 200;
 
     public Level1() {
 
 
+        openingText();
 
 
         paintLevel1();
 
 
-
-
-        Text text = new Text(180, 50, "Level 1");
-        text.setFont(Font.font("Times New Roman", 25));
-        getChildren().add(text);
-        text.setOpacity(0);
-
         Timeline animation = new Timeline(new KeyFrame(Duration.millis(100), e -> {
-            if (text.getOpacity() < 0.8)
-                text.setOpacity(text.getOpacity() + 0.15);
+            if (openingText.getOpacity() < 0.8)
+                openingText.setOpacity(openingText.getOpacity() + 0.15);
         }));
         animation.setCycleCount(20);
         animation.play(); // Start animation
 
         Timeline animation2 = new Timeline(new KeyFrame(Duration.millis(100), e -> {
-            text.setOpacity(text.getOpacity() - 0.05);
+            openingText.setOpacity(openingText.getOpacity() - 0.05);
         }));
         animation2.setCycleCount(50);
         animation2.play(); // Start animation
@@ -64,7 +67,7 @@ public class Level1 extends Drawings {
         }));
         animation4.setCycleCount(15);
 
-        circle1.setOnMouseClicked(e -> {
+        circle1.setOnMouseClicked(e -> { // error
             if (isPushedBoldline2) {
                 animation3.play(); // Start animation
                 animation4.play();
@@ -130,10 +133,11 @@ public class Level1 extends Drawings {
     }
 
     public void paintLevel1() {
+
+
         Rectangle rectangle3 = new Rectangle(0, 0, 800, 500);
         rectangle3.setFill(Color.WHITE);
         getChildren().add(rectangle3);
-
 
 
         Rectangle rectangle = new Rectangle(0, 0, 100, 150);
@@ -144,15 +148,34 @@ public class Level1 extends Drawings {
 
 
         getChildren().clear();
-        paintBoldLine();
-        paintBoldLine2();
+        //paintBoldLine();
+        pathPainter(hLine, startX, startY, endX, endY, 3, "black");
+        arcDrawer(semiCircle, startX + 220, startY, 20, 360, 180);
+        pathPainter(hLineC, startX + 240, startY, endX + 80, endY, 3, "black");
+
+
+        //paintBoldLine2();
+        pathPainter(line, startX2, startY2, endX2, endY2, 3, "black");
+
         getChildren().add(rectangle);
         getChildren().add(rectangle2);
-        paintPath();
+
+
+        // paintPath();
+        pathPainter(path1, 90, 100, 100, 100, 2, "gray");
+        pathPainter(path2, 90, 100, 90, 220, 2, "gray");
+        pathPainter(path3, 90, 220, 400, 220, 2, "gray");
+
+
         paintCircle1();
-        paintPath2();
+
+       // paintPath2();
+        pathPainter(path4,320,200,320,250,2,"gray");
+
         paintCircle2();
+
         paintGate();
+       // pathPainter(gate1,100,93,100,107,3,"black");
         paintGate2();
 
 
@@ -176,9 +199,13 @@ public class Level1 extends Drawings {
         getChildren().add(hLine);
         getChildren().add(semiCircle);
         getChildren().add(hLineC);
+
+
     }
 
     private void paintBoldLine2() {
+
+
         Line line = new Line(startX2, startY2, endX2, endY2);
         line.setStrokeWidth(3);
         line.setStroke(Color.BLACK);
@@ -187,6 +214,8 @@ public class Level1 extends Drawings {
     }
 
     private void paintPath() {
+
+
         Line path1 = new Line(90, 100, 100, 100);
         path1.setStrokeWidth(2);
         path1.setStroke(Color.GRAY);
@@ -204,6 +233,8 @@ public class Level1 extends Drawings {
     }
 
     private void paintPath2() {
+
+
         Line path1 = new Line(320, 200, 320, 250);
         path1.setStrokeWidth(2);
         path1.setStroke(Color.GRAY);
@@ -213,11 +244,8 @@ public class Level1 extends Drawings {
     }
 
     private void paintCircle1() {
-
         circle1.setFill(Color.GRAY);
-
         getChildren().add(circle1);
-
     }
 
     private void paintCircle2() {
@@ -252,6 +280,13 @@ public class Level1 extends Drawings {
         endX = 300;
         endY = 100;
         paintLevel1();
+    }
+
+    void openingText() {
+        openingText = new Text(180, 50, "Level 1");
+        openingText.setFont(Font.font("Times New Roman", 25));
+        getChildren().add(openingText);
+        openingText.setOpacity(0);
     }
 
 }	
