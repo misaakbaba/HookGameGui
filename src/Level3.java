@@ -12,7 +12,7 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 
-public class Level3 extends Pane {
+public class Level3 extends Drawings {
 	private double startX = 200 , startY = 100 , endX = 400 , endY = 100 ;
 
 	public Level3() {

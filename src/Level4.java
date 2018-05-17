@@ -9,15 +9,17 @@ import javafx.scene.shape.Line;
 import javafx.util.Duration;
 
 
-public class Level4 extends Pane {
+public class Level4 extends Drawings {
 	private double startX = 440 , startY = 100 , endX = 460 , endY = 100 ;
 	Timeline animation;
 	private Line rotatingLine = new Line(190,240,190,280);
 	Circle rotatingCircle = new Circle(190,260,20);
-	//daireleri global yap!
-
+	Line hLine1,line2,hLine3;
+	Line  path1,path2,path3,path4,path5,path6;
+	Arc semiCircle;
+	Circle circle1,circle2;
+	int linePst;
 	public Level4() {
-		// TODO Auto-generated constructor stub
 		paintLevel4();
 		
 		rotatingCircle.setOnMouseClicked(e -> {
@@ -32,14 +34,30 @@ public class Level4 extends Pane {
 
 
 		getChildren().clear();
-		paintBoldLine();
-		paintPath();
-		paintCircle();
-		paintBoldLine2();
-		paintPath2();
-		paintCircle2();
+
+		//paintBoldLine();
+		pathPainter(hLine1,startX,startY,endX,endY,3,"black");
+		arcDrawer(semiCircle,startX-20,startY,20,360,180);
+		pathPainter(line2,startX-240,startY,endX-60,endY,3,"black");
+	//	paintPath();
+		pathPainter(path1,190,100,200,100,2,"gray");
+		pathPainter(path2,190,100,190,240,2,"gray");
+		pathPainter(path3,190,280,190,320,2,"gray");
+		//paintCircle();
+		circleDrawer(circle1,190,340,20,"gray");
+		//paintBoldLine2();
+		pathPainter(hLine3,420,100,420,250,3,"black");
+
+		//paintPath2();
+		pathPainter(path4,210,260,420,260,2,"gray");
+		pathPainter(path5,420,250,420,260,2,"gray");
+		pathPainter(path6,120,260,170,260,2,"gray");
+
+		//paintCircle2();
+		circleDrawer(circle2,100,260,20,"gray");
 		paintRotatingCircle();
 		paintRotatingLine();
+		//disconnectorPainter(rotatingCircle,rotatingLine,190,260,linePst);
 		paintGate1();
 		paintGate2();
 
@@ -97,6 +115,7 @@ public class Level4 extends Pane {
 	}
 
 	private void paintPath2() {
+
 		Line path1 = new Line(210,260,420,260);
 		path1.setStrokeWidth(2);
 		path1.setStroke(Color.GRAY);
@@ -126,6 +145,7 @@ public class Level4 extends Pane {
 	}
 
 	private void paintCircle2() {
+
 		Circle circle = new Circle(100,260,20);
 		circle.setFill(Color.GRAY);
 
@@ -153,6 +173,7 @@ public class Level4 extends Pane {
 	}
 
 	private void paintRotatingCircle() {
+
 		rotatingCircle.setFill(Color.WHITE);
 		rotatingCircle.setStroke(Color.gray(0.4));
 		rotatingCircle.setStrokeWidth(3);
@@ -184,13 +205,12 @@ public class Level4 extends Pane {
 			rotatingLine.setStartY(240);
 			rotatingLine.setEndY(280);
 		}
-
 	}
 
 	public void rotateAction() {
 	    animation = new Timeline(
 	    	      new KeyFrame(Duration.millis(1),e -> {
-	    	    	  rotateRotatingLine();
+                      rotateRotatingLine();
 	    	      }));
 	    	    animation.setCycleCount(1);
 	    	    animation.play(); // Start animation

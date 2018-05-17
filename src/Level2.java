@@ -15,7 +15,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
-public class Level2 extends Pane {
+public class Level2 extends Drawings {
 	private double startX = 200, startY = 250, endX = 200, endY = 300;
 
 	public Level2() {
