@@ -19,7 +19,15 @@ public class Level1 extends Drawings {
     private double startX2 = 320, startY2 = 97, endX2 = 320, endY2 = 200;
 
     public Level1() {
+
+
+
+
         paintLevel1();
+
+
+
+
         Text text = new Text(180, 50, "Level 1");
         text.setFont(Font.font("Times New Roman", 25));
         getChildren().add(text);
@@ -122,6 +130,12 @@ public class Level1 extends Drawings {
     }
 
     public void paintLevel1() {
+        Rectangle rectangle3 = new Rectangle(0, 0, 800, 500);
+        rectangle3.setFill(Color.WHITE);
+        getChildren().add(rectangle3);
+
+
+
         Rectangle rectangle = new Rectangle(0, 0, 100, 150);
         rectangle.setFill(Color.WHITE);
 

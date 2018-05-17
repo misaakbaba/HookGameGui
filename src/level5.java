@@ -14,15 +14,15 @@ public class level5 extends Drawings {
     private double startX4 = 300, startY4 = 330, endX4 = 300, endY4 = 120;
     Circle circle1,circle2,circle3,circle4;
     public level5() {
-        figure2();
-        figure1();
         figure3();
+        figure1();
+        figure2();
         figure4();
 
     }
 
 
-    void figure1(){
+    void figure3(){
         circleDrawer(circle1,130, 400, 20, "GRAY");
         pathPainter(path1, 130, 400, 130, 100, 2, "gray");
         pathPainter(shortPath1, 130, 100, 140, 100, 2, "gray");
@@ -34,7 +34,7 @@ public class level5 extends Drawings {
     }
 
 
-    void figure2() {
+    void figure1() {
         circleDrawer(circle2,50, 260, 20, "GRAY");
         pathPainter(path3, 50, 260, 130, 260, 2, "gray");
         pathPainter(path4, 130, 260, 190, 260, 2, "gray");
@@ -46,7 +46,7 @@ public class level5 extends Drawings {
         pathPainter(shortLine2, 180, 250, 200, 250, 3, "black");
 
     }
-    void figure3() {
+    void figure4() {
         circleDrawer(circle3,260, 400, 20, "GRAY");
         pathPainter(path6, 260, 400, 260, 150, 2, "gray");
         pathPainter(path7, 260, 150, 250, 150, 2, "gray");
@@ -54,7 +54,7 @@ public class level5 extends Drawings {
         pathPainter(shortLine3, 250, 140, 250, 160, 3, "black");
     }
 
-    void figure4(){
+    void figure2(){
         pathPainter(path2, 50, 340, 130, 340, 2, "gray");
         disconnectorPainter(disCircle, disLine, 130, 340, 2);
         pathPainter(path8, 130, 340, 300, 340, 2, "gray");
