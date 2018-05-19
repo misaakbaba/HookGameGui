@@ -11,14 +11,14 @@ import javafx.util.Duration;
 
 public class Level1 extends Drawings {
     public boolean isPushedBoldline2 = false;
-    private double zero = 0 ;
+    public boolean isPushedBoldline1 = false;
     Text openingText;
     Line hLine;
     Arc semiCircle;
     Line hLineC;
     Line line;
     Line path1 = new Line(90,100,100,100), path2 = new Line(90,100,90,220),
-    		path3 = new Line(90,220,400,220),path4 = new Line(320,200,320,250);
+    		path3 = new Line(90,220,380,220),path4 = new Line(320,200,320,250);
     Circle circle1 = new Circle(400, 220, 20);
 
     Circle circle2 = new Circle(320, 270, 20);
@@ -31,29 +31,9 @@ public class Level1 extends Drawings {
     private double startX2 = 320, startY2 = 97, endX2 = 320, endY2 = 200;
 
     public Level1() {
-
-
-        openingText();
-
-
         paintLevel1();
-
-        //text animation
-        Timeline animation = new Timeline(new KeyFrame(Duration.millis(100), e -> {
-            if (openingText.getOpacity() < 0.8)
-                openingText.setOpacity(openingText.getOpacity() + 0.15);
-        }));
-        animation.setCycleCount(20);
-        animation.play(); // Start animation
-
-
-        Timeline animation2 = new Timeline(new KeyFrame(Duration.millis(100), e -> {
-            openingText.setOpacity(openingText.getOpacity() - 0.05);
-        }));
-        animation2.setCycleCount(50);
-        animation2.play(); // Start animation
-
-       //--------------------------------------
+        
+//    	//--------------------------------------
 
         //animations for figure 1
         Timeline animation3 = new Timeline(new KeyFrame(Duration.millis(10), e -> {
@@ -97,38 +77,38 @@ public class Level1 extends Drawings {
             	animation3.play(); // Start animation
             	animation4.play();
             	//disappearing gate and path
-                FadeTransition fade = new FadeTransition(Duration.millis(1600), gate1);
+                FadeTransition fade = new FadeTransition(Duration.millis(2500), gate1);
                 fade.setDelay(Duration.millis(1600));
                 fade.setFromValue(1);
                 fade.setToValue(0);
                 fade.play();
 
-                FadeTransition fade2 = new FadeTransition(Duration.millis(1600), path1);
+                FadeTransition fade2 = new FadeTransition(Duration.millis(2000), path1);
                 fade2.setDelay(Duration.millis(1600));
                 fade2.setFromValue(1);
                 fade2.setToValue(0);
                 fade2.play();
 
-                FadeTransition fade3 = new FadeTransition(Duration.millis(1600), path2);
+                FadeTransition fade3 = new FadeTransition(Duration.millis(2000), path2);
                 fade3.setDelay(Duration.millis(1600));
                 fade3.setFromValue(1);
                 fade3.setToValue(0);
                 fade3.play();
 
-                FadeTransition fade4 = new FadeTransition(Duration.millis(1600), path3);
+                FadeTransition fade4 = new FadeTransition(Duration.millis(2000), path3);
                 fade4.setDelay(Duration.millis(1600));
                 fade4.setFromValue(1);
                 fade4.setToValue(0);
                 fade4.play();
 
-                FadeTransition fade5 = new FadeTransition(Duration.millis(1600), circle1);
+                FadeTransition fade5 = new FadeTransition(Duration.millis(2000), circle1);
                 fade5.setDelay(Duration.millis(1600));
                 fade5.setFromValue(1);
                 fade5.setToValue(0);
                 fade5.play();
-                
+
                 Timeline animationC = new Timeline(new KeyFrame(Duration.millis(20), f -> {
-                	
+
 
                 }));
                 animationC.setCycleCount(50);
@@ -182,6 +162,8 @@ public class Level1 extends Drawings {
                 SequentialTransition seq = new SequentialTransition();
                 seq.getChildren().addAll(broke, broke2,restart);
                 seq.play();
+            	animationCircle1.play();
+            	animationCircle12.play();
                 fade.play();
                 fade2.play();
 				startX = 100; startY = 100; endX = 300; endY = 100;
@@ -193,7 +175,7 @@ public class Level1 extends Drawings {
 
         });
         //------------------------------------------------
-        
+
         //animations for circle 2 action
         Timeline animation5 = new Timeline(new KeyFrame(Duration.millis(10), e -> {
             startY2 += 1;
@@ -202,7 +184,7 @@ public class Level1 extends Drawings {
 
         }));
         animation5.setCycleCount(110);
-        
+
         Timeline animation6 = new Timeline(new KeyFrame(Duration.millis(10), e -> {
             gate2.setStartX(gate2.getStartX() - 1);
             gate2.setEndX(gate2.getEndX() + 1);
@@ -210,23 +192,42 @@ public class Level1 extends Drawings {
 
         }));
         animation6.setCycleCount(15);
+        //---------------------------------------------------------------
+        //animations for the circle
+        Timeline animationCircle2 = new Timeline(new KeyFrame(Duration.millis(20), e -> {
+        	circle2.setRadius(circle2.getRadius() + 1);
+            paintLevel1();
+
+        }));
+        animationCircle2.setCycleCount(5);
+
+        Timeline animationCircle22 = new Timeline(new KeyFrame(Duration.millis(20), e -> {
+        	circle2.setRadius(circle2.getRadius() - 1);
+            paintLevel1();
+
+        }));
+        animationCircle22.setCycleCount(5);
+        animationCircle22.setDelay(Duration.millis(40));
+        //------------------------------------------------------
 
         circle2.setOnMouseClicked(e -> {
             isPushedBoldline2 = true;
             animation5.play(); // Start animation
             animation6.play();
+            animationCircle2.play();
+            animationCircle22.play();
             FadeTransition fade = new FadeTransition(Duration.millis(2000), gate2);
             fade.setDelay(Duration.millis(200));
             fade.setFromValue(1);
             fade.setToValue(0);
             fade.play();
-            
+
             FadeTransition fade2 = new FadeTransition(Duration.millis(2000), path4);
             fade2.setDelay(Duration.millis(200));
             fade2.setFromValue(1);
             fade2.setToValue(0);
             fade2.play();
-            
+
             FadeTransition fade3 = new FadeTransition(Duration.millis(2000), circle2);
             fade3.setDelay(Duration.millis(200));
             fade3.setFromValue(1);
@@ -264,11 +265,10 @@ public class Level1 extends Drawings {
 
         getChildren().add(rectangle);
         getChildren().add(rectangle2);
-        getChildren().add(path1);//bunlarý ekledim
-        getChildren().add(path2);//linepainterarý sildim
-        getChildren().add(path3);//yukarýda initialize ettim
+        getChildren().add(path1);
+        getChildren().add(path2);
+        getChildren().add(path3);
         getChildren().add(path4);
-
         paintCircle1();
 
         paintCircle2();
@@ -286,7 +286,6 @@ public class Level1 extends Drawings {
     private void paintCircle2() {
 
         circle2.setFill(Color.GRAY);
-
         getChildren().add(circle2);
 
     }
@@ -315,14 +314,6 @@ public class Level1 extends Drawings {
         endX = 300;
         endY = 100;
         paintLevel1();
-    }
-
-    void openingText() {
-        openingText = new Text(180, 50, "Level 1");
-        openingText.setFont(Font.font("Times New Roman", 25));
-        getChildren().add(openingText);
-        openingText.setOpacity(0);
-
     }
 
 
