@@ -15,26 +15,7 @@ public class Drawings extends Pane {
         arc.setStroke(Color.BLACK);
         getChildren().add(arc);
     }
-     int disconnectorPainter(Circle circle, Line line, double centerX, double centerY, int linePst) {
-        //linePst=this.linePst;
-        circle = new Circle(centerX, centerY, 20);
-        circle.setFill(Color.WHITE);
-        circle.setStroke(Color.gray(0.4));
-        circle.setStrokeWidth(3);
-        getChildren().add(circle);
-        switch (linePst) {
-            case 1:
-                line = new Line(centerX, centerY - 20, centerX, centerY + 20);
-                break;
-            case 2:
-                line = new Line(centerX - 20, centerY, centerX + 20, centerY);
-                break;
-        }
-        line.setStrokeWidth(2);
-        line.setStroke(Color.gray(0.4));
-        getChildren().add(line);
-    return linePst;
-    }
+
       void linePainter(Line path, double startX, double startY, double endX, double endY, double stroke, String color) {
         path = new Line(startX, startY, endX, endY);
         path.setStrokeWidth(stroke);
