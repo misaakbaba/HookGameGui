@@ -228,135 +228,26 @@ public class Level4 extends Drawings {
         rectangle2.setFill(Color.WHITE);
         Rectangle rectangle = new Rectangle(0, 0, 200, 200);
         rectangle.setFill(Color.WHITE);
-        //paintBoldLine();
         linePainter(hLine1, startX, startY, endX, endY, 3, "black");
         arcDrawer(semiCircle, startX - 20, startY, 20, 360, 180);
         linePainter(line2, startX - 240, startY, endX - 60, endY, 3, "black");
         getChildren().add(rectangle);
-        //	paintPath();
-        //linePainter(path1,190,100,200,100,2,"gray");//end x i 200 olan beyaz kare koyulacak
-        //	linePainter(path2,190,100,190,240,2,"gray");
-        //linePainter(path3,190,280,190,320,2,"gray");
         getChildren().add(path1);
         getChildren().add(path2);
-        getChildren().add(path3);
-        //paintCircle();
-        //circleDrawer(circle1,190,340,20,"gray");
+        getChildren().add(path3);;
         circle1Paint();
-        //paintBoldLine2();
-
         linePainter(hLine3, startX2, startY2, endX2, endY2, 3, "black");
         getChildren().add(rectangle2);
-        //paintPath2();
-        //linePainter(path4,210,260,420,260,2,"gray");
-        //	linePainter(path5,420,250,420,260,2,"gray");
-        //linePainter(path6,120,260,170,260,2,"gray");
         getChildren().add(path4);
         getChildren().add(path5);
         getChildren().add(path6);
-
-        //paintCircle2();
-        //circleDrawer(circle2,100,260,20,"gray");
         circle2Paint();
         paintRotatingCircle();
         paintRotatingLine();
-        //disconnectorPainter(rotatingCircle,rotatingLine,190,260,linePst);
         paintGate1();
         paintGate2();
 
     }
-
-    private void paintBoldLine() {
-        Line hLine = new Line(startX, startY, endX, endY);
-        hLine.setStrokeWidth(3);
-        hLine.setStroke(Color.BLACK);
-
-        Arc semiCircle = new Arc(startX - 20, startY, 20, 20, 360, 180);
-        semiCircle.setType(ArcType.OPEN);
-        semiCircle.setFill(Color.WHITE);
-        semiCircle.setStrokeWidth(3);
-        semiCircle.setStroke(Color.BLACK);
-
-        Line line2 = new Line(startX - 240, startY, endX - 60, endY);
-        line2.setStrokeWidth(3);
-        line2.setStroke(Color.BLACK);
-
-
-        getChildren().add(hLine);
-        getChildren().add(semiCircle);
-        getChildren().add(line2);
-    }
-
-    private void paintBoldLine2() {
-        Line hLine = new Line(420, 100, 420, 250);
-        hLine.setStrokeWidth(3);
-        hLine.setStroke(Color.BLACK);
-
-
-        getChildren().add(hLine);
-    }
-
-    private void paintPath() {
-        Line path1 = new Line(190, 100, 200, 100);
-        path1.setStrokeWidth(2);
-        path1.setStroke(Color.GRAY);
-
-        Line path2 = new Line(190, 100, 190, 240);
-        path2.setStrokeWidth(2);
-        path2.setStroke(Color.GRAY);
-
-        Line path3 = new Line(190, 280, 190, 320);
-        path3.setStrokeWidth(2);
-        path3.setStroke(Color.GRAY);
-
-
-        getChildren().add(path1);
-        getChildren().add(path2);
-        getChildren().add(path3);
-
-
-    }
-
-    private void paintPath2() {
-
-        Line path1 = new Line(210, 260, 420, 260);
-        path1.setStrokeWidth(2);
-        path1.setStroke(Color.GRAY);
-
-        Line path2 = new Line(420, 250, 420, 260);
-        path1.setStrokeWidth(2);
-        path1.setStroke(Color.GRAY);
-
-        Line path3 = new Line(120, 260, 170, 260);
-        path3.setStrokeWidth(2);
-        path3.setStroke(Color.GRAY);
-
-
-        getChildren().add(path1);
-        getChildren().add(path2);
-        getChildren().add(path3);
-
-    }
-
-    private void paintCircle() {
-        Circle circle = new Circle(190, 340, 20);
-        circle.setFill(Color.GRAY);
-
-        getChildren().add(circle);
-
-
-    }
-
-    private void paintCircle2() {
-
-        Circle circle = new Circle(100, 260, 20);
-        circle.setFill(Color.GRAY);
-
-        getChildren().add(circle);
-
-
-    }
-
     private void paintGate1() {
 
         gate1.setStrokeWidth(3);
