@@ -1,8 +1,11 @@
+import javax.lang.model.type.PrimitiveType;
+
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.SequentialTransition;//270. datýra bak
 import javafx.animation.Timeline;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 import javafx.scene.text.Font;
@@ -117,7 +120,7 @@ public class Level1 extends Drawings {
                 fade5.play();
                 //----------------------------------------------------
 
-
+                
 
 
             } else {
@@ -327,9 +330,11 @@ public class Level1 extends Drawings {
         paintLevel1();
     }
 
-
-
-
+    public boolean checkFinish() {
+		if(isPushedBoldline1 && isPushedBoldline2)
+			return true;
+	    return false;
+	}
 
 }
 
