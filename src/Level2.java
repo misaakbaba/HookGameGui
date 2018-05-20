@@ -196,7 +196,16 @@ public class Level2 extends Pane {
                 fade4.setFromValue(1);
                 fade4.setToValue(0);
             	fade4.play();          	
-            	
+            	fade4.setOnFinished(event -> {
+            		Level3 l3=new Level3();
+            		getChildren().clear();
+					l3.setOpacity(0);
+					getChildren().add(l3);
+					FadeTransition fadeTransition=new FadeTransition(Duration.millis(2000),l3);
+					fadeTransition.setFromValue(0);
+					fadeTransition.setToValue(1);
+					fadeTransition.play();
+				});
 			}
         	else{
             	//animation for collision

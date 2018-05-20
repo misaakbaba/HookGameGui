@@ -3,7 +3,7 @@ import javax.lang.model.type.PrimitiveType;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
-import javafx.animation.SequentialTransition;//270. datýra bak
+import javafx.animation.SequentialTransition;//270. datï¿½ra bak
 import javafx.animation.Timeline;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -119,7 +119,17 @@ public class Level1 extends Drawings {
                 fade5.setToValue(0);
                 fade5.play();
                 //----------------------------------------------------
+            fade5.setOnFinished(event -> {
+                getChildren().clear();
+                Level2 l2=new Level2();
+                l2.setOpacity(0);
+                getChildren().add(l2);
+                FadeTransition fadeTransition=new FadeTransition(Duration.millis(2000),l2);
+                fadeTransition.setFromValue(0);
+                fadeTransition.setToValue(1);
+                fadeTransition.play();
 
+            });
                 
 
 

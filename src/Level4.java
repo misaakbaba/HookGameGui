@@ -184,6 +184,16 @@ public class Level4 extends Drawings {
             fade10.play();
             fade11.play();
             fade12.play();
+            fade12.setOnFinished(event1 -> {
+                getChildren().clear();
+                Level5 l5=new Level5();
+                l5.setOpacity(0);
+                getChildren().add(l5);
+                FadeTransition fadeTransition=new FadeTransition(Duration.millis(2000),l5);
+                fadeTransition.setFromValue(0);
+                fadeTransition.setToValue(1);
+                fadeTransition.play();
+            });
             	}
             	if(isVertical && !isPushedBoldLine){
                 FadeTransition fade13 = new FadeTransition(Duration.millis(2000), this);

@@ -26,7 +26,7 @@ public class Level5 extends Drawings {
             arc3 = new Arc(endX4, endY4 - 20, 20, 20, 270, 180);
     boolean isPushedFigure4 = false, isPushedFigure3 = false, isPushedFigure1 = false;
     boolean isVertical1 = false, isVertical2 = true;
-    private Line path1 = new Line(130, 400, 130, 100), path2 = new Line(50, 340, 130, 340),
+    private Line path1 = new Line(130, 380, 130, 100), path2 = new Line(50, 340, 130, 340),
             path3 = new Line(50, 260, 130, 260),
             path4 = new Line(130, 260, 190, 260), path6 = new Line(260, 380, 260, 150),
             path7 = new Line(260, 150, 250, 150), path8 = new Line(150, 340, 300, 340),
@@ -135,6 +135,17 @@ public class Level5 extends Drawings {
                 Timeline restart = new Timeline(new KeyFrame(Duration.millis(10), ex -> {
                     gate3.setStartY(90);
                     gate3.setEndY(110);
+                    disLine2.setStartX(130);
+                    disLine2.setEndX(130);
+                    disLine2.setStartY(240);
+                    disLine2.setEndY(280);
+                    isVertical2=true;
+
+                    disLine.setStartX(110);
+                    disLine.setEndX(150);
+                    disLine.setStartY(340);
+                    disLine.setEndY(340);
+                    isVertical1 = false;
                     restartLevel();
                     paintLevel5();
                 }));
@@ -284,6 +295,17 @@ public class Level5 extends Drawings {
                 Timeline restart = new Timeline(new KeyFrame(Duration.millis(10), ex -> {
                     gate1.setStartX(180);
                     gate1.setEndX(200);
+//                    disLine2.setStartX(130);
+//                    disLine2.setEndX(130);
+//                    disLine2.setStartY(240);
+//                    disLine2.setEndY(280);
+//                    isVertical2=true;
+//
+//                    disLine.setStartX(110);
+//                    disLine.setEndX(150);
+//                    disLine.setStartY(340);
+//                    disLine.setEndY(340);
+//                    isVertical1 = false;
                     restartLevel();
                     paintLevel5();
                 }));
@@ -299,11 +321,7 @@ public class Level5 extends Drawings {
                 gate1.setStartX(180);
                 gate1.setEndX(200);
                 // dissline hemen geri geliyor
-                disLine2.setStartX(130);
-                disLine2.setEndX(130);
-                disLine2.setStartY(240);
-                disLine2.setEndY(280);
-                isVertical2=true;
+
             }
 
 
@@ -398,6 +416,17 @@ public class Level5 extends Drawings {
                 Timeline restart = new Timeline(new KeyFrame(Duration.millis(10), ex -> {
                     gate2.setStartX(290);
                     gate2.setEndX(310);
+//                    disLine2.setStartX(130);
+//                    disLine2.setEndX(130);
+//                    disLine2.setStartY(240);
+//                    disLine2.setEndY(280);
+//                    isVertical2=true;
+//
+//                    disLine.setStartX(110);
+//                    disLine.setEndX(150);
+//                    disLine.setStartY(340);
+//                    disLine.setEndY(340);
+//                    isVertical1 = false;
                     restartLevel();
                     paintLevel5();
                 }));
@@ -510,7 +539,7 @@ public class Level5 extends Drawings {
     }
 
     void circle3Paint() {
-        circle3.setFill(Color.BLACK);
+        circle3.setFill(Color.GRAY);
         getChildren().add(circle3);
     }
 
@@ -553,14 +582,14 @@ public class Level5 extends Drawings {
             disLine.setStartY(320);
             disLine.setEndY(360);
             isVertical1 = true;
-            System.out.println("dik");
+
         } else {
             disLine.setStartX(110);
             disLine.setEndX(150);
             disLine.setStartY(340);
             disLine.setEndY(340);
             isVertical1 = false;
-            System.out.println("yatay");
+
         }
     }
 
@@ -581,7 +610,7 @@ public class Level5 extends Drawings {
             disLine2.setStartY(240);
             disLine2.setEndY(280);
             isVertical2 = true;
-            System.out.println("dik");
+
         } else {
             disLine2.setStartX(110);
             disLine2.setEndX(150);
@@ -608,7 +637,7 @@ public class Level5 extends Drawings {
          path1.setOpacity(1);path2.setOpacity(1);path3.setOpacity(1);path4.setOpacity(1);path6.setOpacity(1);
         path7.setOpacity(1);path8.setOpacity(1);path9.setOpacity(1);shortPath1.setOpacity(1);shortPath2.setOpacity(1);
         circle1.setOpacity(1);circle2.setOpacity(1);circle3.setOpacity(1);circle4.setOpacity(1);
-        gate1.setOpacity    (1);gate2.setOpacity(1);gate3.setOpacity(1);gate4.setOpacity(1);
+        gate1.setOpacity(1);gate2.setOpacity(1);gate3.setOpacity(1);gate4.setOpacity(1);
         gate1.setStartX(180);
         gate1.setEndX(200);
         gate2.setStartX(290);
@@ -617,7 +646,6 @@ public class Level5 extends Drawings {
         gate3.setEndY(110);
         gate4.setStartY(140);
         gate4.setEndY(160);
-
          paintLevel5();
 
     }
